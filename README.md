@@ -10,7 +10,7 @@
 ![Tavily](https://img.shields.io/badge/search-Tavily-2E7D32)
 ![Status](https://img.shields.io/badge/status-hackathon%20MVP-orange)
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/slcha25/FounderPulse)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://founderpulse.onrender.com/)
 
 </div>
 
