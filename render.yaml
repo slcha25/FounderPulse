@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: founderpulse
+    env: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.6
+      - key: FOUNDERPULSE_LLM_MODEL
+        value: gpt-4o-mini
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: TAVILY_API_KEY
+        sync: false
+
+# Notes:
+# - OPENAI_API_KEY and TAVILY_API_KEY are marked `sync: false` on purpose: Render will prompt
+#   for them in the dashboard instead of storing them in this file. Never put real keys here.
+# - `plan: free` has an EPHEMERAL filesystem — backend/data/cases and contact_messages.json
+#   reset on every deploy/restart, and the service spins down after inactivity (cold start on
+#   the next request). Fine for a demo; for real persistence, upgrade the plan and add a
+#   persistent disk mounted at /opt/render/project/src/backend/data, e.g.:
+#
+#   disk:
+#     name: founderpulse-data
+#     mountPath: /opt/render/project/src/backend/data
+#     sizeGB: 1
