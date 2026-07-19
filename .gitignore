@@ -1,0 +1,7 @@
+backend/.env
+backend/data/cases/*.json
+backend/data/contact_messages.json
+__pycache__/
+*.pyc
+.venv/
+node_modules/

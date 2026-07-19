@@ -1,0 +1,9 @@
+fastapi>=0.115
+uvicorn[standard]>=0.30
+python-dotenv>=1.0
+pydantic>=2.9
+openai>=1.51
+tavily-python>=0.5
+pypdf>=4.3
+python-docx>=1.1
+python-multipart>=0.0.9
