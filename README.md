@@ -245,33 +245,6 @@ URL you need. API docs are auto-generated at `/docs`.
 
 ---
 
-## Deploying to Render
-
-The repo includes a `render.yaml` blueprint, so Render can build and deploy the whole thing
-from one file — no manual service configuration needed.
-
-1. Push this repo to GitHub (already done if you're reading this on GitHub).
-2. Go to [render.com](https://dashboard.render.com/blueprints) → **New** → **Blueprint**, and
-   connect this repository. Render will detect `render.yaml` automatically.
-3. When prompted, paste in your `OPENAI_API_KEY` and `TAVILY_API_KEY`. These are marked as
-   secrets in the blueprint, so Render asks for them directly — they are never stored in the
-   repo.
-4. Click **Apply**. Render installs `backend/requirements.txt` and starts the app with
-   `uvicorn app.main:app --host 0.0.0.0 --port $PORT`. First deploy takes a few minutes.
-
-Once it's live, Render gives you a URL like `https://founderpulse.onrender.com` — that one URL
-serves both the API and the frontend, same as running it locally.
-
-> **Heads up about the free plan:** Render's free tier has an *ephemeral* filesystem and spins
-> the service down after periods of inactivity. That means:
-> - Case history and contact messages are stored as JSON files on disk, so they **reset on every
->   deploy or restart**. Fine for a demo; not fine for anything you need to keep.
-> - After sitting idle, the first request wakes the service back up and can take ~30–60 seconds.
->
-> To keep case data permanently, upgrade the service to a paid plan and attach a persistent
-> disk (there's a commented-out example in `render.yaml`) — or move `memory_store.py` to a real
-> database, which is the eventual fix either way (see "What's not built yet" above).
-
 ## Using it
 
 1. Click **New case**, type in a company name, and optionally add its URL and drop in a pitch
